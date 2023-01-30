@@ -1,0 +1,319 @@
+n=int(input("enter a number:"))
+for i in range(1,n+1):
+    if i%3==0 and i%5==0:
+        print("fizzbuzz")
+    elif i%5==0:
+        print("buzz")
+    else:
+        print(str(i))
+
+
+enter a number:
+4
+1
+2
+3
+4
+
+
+t=int(input("enter total users="))
+if(t==0):
+    print("invalid input")
+    t=t=int(input("enter total users="))
+elif(t<0):
+    print("invalid input")
+    t=t=int(input("enter  total users="))
+s=int(input("enter staff users="))
+n=(s//3)
+if(t<s):
+    print("invalid input")
+elif(t==s):
+    print("student users are=",t-(s-n))
+else:
+    print("student users are=",t-s-n)
+    
+
+enter total users=
+2
+enter staff users=
+0
+student users are= 2
+
+
+def smallernumberthancurrent(nums):
+    count=[0]*len(nums)
+    for i in range(len(nums)):
+        for j in range(len(nums)):
+           if nums[j]<nums[i]:
+               count[i]+=1
+    return count
+print(smallernumberthancurrent([5,6,7,8]))
+[0, 1, 2, 3]
+
+def palindrome(s):
+   i=0
+   j=len(s)-1
+   while i<j:
+      while i<j and not s[i].isalnum():
+         i += 1
+      while i <j and not s[j].isalnum():
+         j -= 1
+      if s[i].lower()!=s[j].lower():
+         return False
+      i,j=i+1,j-1
+   return True
+print(palindrome("race a car"))
+print(palindrome(""))
+print(palindrome("madam"))
+print(palindrome("honest"))
+print(palindrome("A man,a plan,a canal:Panama"))
+
+
+False
+True
+True
+False
+True
+
+
+def minJumps(arr,l,h):
+   if(h==l):
+      return 0
+   if(arr[l]==0):
+      return float('inf')
+   min=float('inf')
+   for i in range(l+1,h+1):
+      if(i<l+arr[l]+1):
+         jumps=minJumps(arr,i,h)
+         if(jumps !=float('inf') and
+            jumps+1<min):
+           min=jumps+1
+   return min
+arr=[2,3,0,1,4]
+n=len(arr)
+print('minimum number of jumps to reach',
+      'end is',minJumps(arr,0,n-1))
+
+minimum number of jumps to reach end is 2
+
+
+def delchar(a,b):
+   if len(b)!=1:
+      return a
+   else:
+      return a.replace(b,"")
+a="Good evening"
+print(a)
+b=input("enter the character to be removed:")
+print(delchar(a,b))
+
+Good evening
+enter the character to be removed:
+g
+Good evenin
+
+
+def countstrings(n,start):
+    if n==0:
+        return 1
+    count=0
+    for i in range(start,5):
+        count+=countstrings(n-1,i)
+    return count
+def countvowelstrings(n):
+    return countstrings(n,0)
+n=int(input("enter a num:"))
+print(countvowelstrings(n))
+enter a num:
+12
+1820
+
+def roman_to_int(s):
+    roman_dict={
+        'l':1,
+        'V':5,
+        'X':10,
+        'L':50,
+        'C':100,
+        'D':500,
+        'M':1000,
+    }
+    total=0
+    i=0
+    while i<len(s):
+        if i+1<len(s) and roman_dict[s[i]]<roman_dict[s[i+1]]:
+            total+=roman_dict[s[i+1]]-roman_dict[s[i]]
+            i+=2
+        else:
+            total+=roman_dict[s[i]]
+            i+=1
+    return total
+print(roman_to_int("lll"))
+print(roman_to_int("LVlll"))
+print(roman_to_int("MCMXClV"))
+print(roman_to_int("LV"))
+3
+58
+1994
+55
+
+month=input("enter month:")
+day=int(input("enter no.of days:"))
+if month in ('january','february','march'):
+    season='winter'
+elif month in ('april','may','june'):
+    season='summer'
+elif month in ('july','august','september'):
+    season='spring'
+else:
+    season='autumn'
+if(month=='march')and (day>19):
+    season='summer'
+elif(month=='june')and (day>20):
+    season='spring'
+elif(month=='december')and (day>20):
+    season='winter'
+print("season is",season)
+enter month:
+12
+enter no.of days:
+20
+season is autumn
+
+
+string="i am a python programmer"
+words=string.split()
+list1=list(words)
+list2=[]
+for i in list1[::-1]:
+    list2.append(i)
+print(list2)
+print("converting to string")
+strconv=""
+for x in list2:
+    strconv+=''+x
+print(strconv)
+['programmer', 'python', 'a', 'am', 'i']
+converting to string
+programmerpythonaami
+
+
+def salaryCalculation(grade,salary):
+   if(salary>10000):
+      if(grade=='A'):
+         salary=salary+(salary/5)
+         print(salary)
+      elif(grade=='B'):
+         salary=salary+(salary/10)
+         print(salary)
+         
+   else:
+      if(grade=='A'):
+         salary=salary+(salary/7)
+         print(salary)
+      elif(grade=='B'):
+          salary=salary+(salary/12)
+          print(salary)
+
+grade=input("Enter the Grade of your Employee"+"Like 'A' or 'B' ")
+salary=int(input("Enter your employee salary"))
+salaryCalculation(grade,salary)
+
+Enter the Grade of your EmployeeLike 'A' or 'B' 
+b
+Enter your employee salary
+6000
+
+def length(str):
+   lis=list(str.split(" "))
+   return len(lis[-1])
+str=input("Enter the string to find the last word count")
+print("The length of last word is",length(str))
+
+Enter the string to find the last word count
+lasya
+The length of last word is 5
+num1=int(input("enter the number1:"))
+num2=int(input("enter the number2:"))
+sumdivisor=0
+productdivisor=0
+print("THE COMMON DIVISORS OF NUMBER",num1,"AND",num2,"ARE-")
+for i in range(1,min(num1,num2)+1):
+    if num1%i==num2%i==0:
+        sumdivisor=sumdivisor+i
+if(productdivisor%sumdivisor==0):
+    print("YEAH")
+else:
+    print("NAH")
+enter the number1:
+3
+enter the number2:
+6
+THE COMMON DIVISORS OF NUMBER 3 AND 6 ARE-
+YEAH
+
+def shuffle(n,m):
+    for j in range(8):
+        print(n[j],m[j],n[j+1],m[j+1])
+list1=[]
+list2=[]
+a=int(input("enter the number of elements for list 1:"))
+for i in range(1,a+1):
+    b=int(input("enter the number"))
+    list1.append(b)
+print(list1)
+c=int(input("enter the number of elements for list 2:"))
+for i in range(1,c+1):
+    d=int(input("enter the number"))
+    list1.append(d)
+print(list2)
+print(shuffle(list1,list2))
+
+def shuffle(n,m):
+    for j in range(8):
+        print(n[j],m[j],n[j+1],m[j+1])
+list1=[]
+list2=[]
+a=int(input("enter the number of elements for list 1:"))
+for i in range(1,a+1):
+    b=int(input("enter the number"))
+    list1.append(b)
+print(list1)
+c=int(input("enter the number of elements for list 2:"))
+for i in range(1,c+1):
+    d=int(input("enter the number"))
+    list1.append(d)
+print(list2)
+print(shuffle(list1,list2))
+
+enter the number of elements for list 1:
+2
+enter the number
+4
+enter the number
+6
+[4, 6]
+enter the number of elements for list 2:
+2
+enter the number
+1
+enter the number
+4
+
+def findpeakutil(arr,low,high,n):
+    mid=low+(high-low)/2
+    mid=int(mid)
+    if((mid==0 or arr[mid-1]<=arr[mid])and(mid==n-1 or arr[mid+
+    1]<=arr[mid])):
+        return mid
+    elif(mid>0 and arr[mid-1]>arr[mid]):
+        return findpeakutil(arr,low,(mid-1),n)
+    else:
+        return findpeakutil(arr,(mid+1),high,n)
+def findpeak(arr,n):
+        return findpeakutil(arr,0,n-1,n)
+arr=[1,2,1,3,5,6,4]
+n=len(arr)
+print("index of a peak point is",findpeak(arr,n))
+
+    index of a peak point is 5
